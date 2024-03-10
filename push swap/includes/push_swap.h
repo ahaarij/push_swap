@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 12:48:30 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/03/06 16:55:14 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/03/10 12:46:27 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,13 @@ typedef struct s_stacks
 }           t_stacks;
 
 void    free_and_exit_msg(t_stacks *s, char *msg);
+void    initialize_stacks(int argc, char **argv, t_stacks *s);
+void    exit_if_dupes_or_sorted(t_stacks *s, int i);
+void    parse_numbers(t_stacks *s);
+int	    ft_atol(const char *n, t_stacks *s);
+int	    is_array_sorted(t_stacks *s);
+void	swap(char *str, int *arr, int size);
+void	sort_three_elements(t_stacks *s);
+void	rotate(int *array, int size, char *dir, char *list);
 
 #endif

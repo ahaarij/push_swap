@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 12:48:00 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/03/06 16:42:30 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/03/10 13:03:09 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,12 @@ int main(int argc, char **argv)
     initialize_stacks(argc, argv, s);
     join_args(argc, argv, s);
 	parse_numbers(s);
+	exit_if_dupes_or_sorted(s, 0);
+	if (s->a_size == 2 && s->a[0] > s->a[1])
+		swap("sa", s->a, s->a_size);
+	else if (s->a_size == 3)
+		sort_three_elements(s);
+	else if (s->a_size == 5)
+		sort_four_five_elements(s);
+	
 }
