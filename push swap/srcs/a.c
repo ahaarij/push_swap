@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 12:48:00 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/03/10 13:03:09 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/03/17 16:18:25 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void validate_args(int argc, char **argv)
 			|| (argv[i][j] == '+' && argv[i][j + 1] == '\0')
 			|| (argv[i][j] == '-' && argv[i][j + 1] == ' ')
 			|| (argv[i][j] == '+' && argv[i][j + 1] == ' '))
-				free_and_exit_with_message(NULL, "Error\n");
+				free_and_exit_msg(NULL, "Error\n");
             j++;
         }
     }
@@ -68,7 +68,7 @@ static void join_args(int argc, char **argv, t_stacks *s)
 	temp2 = ft_strdup("");
 	while(++i < argc && argv[i] != NULL)
 	{
-		temp = ft_stroin(temp2, argv[i]);
+		temp = ft_strjoin(temp2, argv[i]);
 		if (temp2)
 			free(temp2);
 		if (i != argc - 1)
@@ -104,6 +104,10 @@ int main(int argc, char **argv)
 	else if (s->a_size == 3)
 		sort_three_elements(s);
 	else if (s->a_size == 5)
-		sort_four_five_elements(s);
-	
+		sort_four_to_five_elements(s);
+	else
+		radix_sort(s);
+	exit_if_dupes_or_sorted(s, 1);
+	free_and_exit_msg(s, "Error\n");
+	return (0);
 }

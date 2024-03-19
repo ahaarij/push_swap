@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:01:04 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/03/10 10:52:59 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/03/17 16:17:31 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	create_index(t_stacks *s)
 		while(++j < s->a_size)
 			if(s->a[i] > s->a[j])
 				k++;
-			new_a = k;
+			new_a[i] = k;
 	}
 	i = s->a_size;
-	while (i--);
+	while (i--)
 		s->a[i] = new_a[i];
 	free(new_a);
 }
@@ -94,7 +94,7 @@ void    parse_numbers(t_stacks *s)
     j = 0;
     temp = ft_split(s->join_args, ' ');
     i = 0;
-    while(temp[i] != NULL && temp[i][0] != NULL)
+    while(temp[i] != NULL && temp[i][0] != '\0')
     {
         s->a[j++] = ft_atol(temp[i++], s);
         free(temp[i - 1]);

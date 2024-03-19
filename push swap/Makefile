@@ -6,7 +6,7 @@
 #    By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/06 16:43:46 by ahaarij           #+#    #+#              #
-#    Updated: 2024/03/06 16:49:10 by ahaarij          ###   ########.fr        #
+#    Updated: 2024/03/17 16:20:55 by ahaarij          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,10 @@ CFLAGS += -g3 -fsanitize=address
 LIBFT_DIR = libft
 LIBFT = ./libft/libft.a
 RM = rm -rf
-SRCS = main.c \
+SRCS = a.c \
 		utils.c \
 		sort.c \
+		move.c
 SRC = $(addprefix ./srcs/,$(SRCS))
 OBJ = $(SRC:.c=.o)
 
@@ -38,7 +39,7 @@ $(NAME): $(LIBFT) $(OBJ)
 
 $(OBJ): $(SRC)
 	@$(CC) $(CFLAGS) -c $? -I./$(LIBFT_DIR)
-	@mv *.o src
+	@mv *.o srcs
 
 clean:	
 	@$(RM) src/*.o
