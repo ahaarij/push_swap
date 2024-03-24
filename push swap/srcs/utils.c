@@ -6,11 +6,12 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:01:04 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/03/17 16:17:31 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/03/22 19:19:29 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
 
 void	create_index(t_stacks *s)
 {
@@ -19,7 +20,7 @@ void	create_index(t_stacks *s)
 	int	k;
 	int	*new_a;
 
-	new_a = malloc(s->a_size * sizeof new_a);
+	new_a = malloc(s->a_size * sizeof * new_a);
 	if (new_a == NULL)
 		free_and_exit_msg(s, "Error\n");
 	i = -1;
@@ -30,7 +31,7 @@ void	create_index(t_stacks *s)
 		while(++j < s->a_size)
 			if(s->a[i] > s->a[j])
 				k++;
-			new_a[i] = k;
+		new_a[i] = k;
 	}
 	i = s->a_size;
 	while (i--)
@@ -47,16 +48,16 @@ void    initialize_stacks(int argc, char **argv, t_stacks *s)
     s->b_size = 0;
     while(--argc)
     {
-        if (wordcount(argv[i + 1], ' '))
-            s->a_size += wordcount(argv[i + 1], ' ');
+        if (ft_count_words(argv[i + 1], ' '))
+            s->a_size += ft_count_words(argv[i + 1], ' ');
         else
             s->a_size++;
         i++;
     }
-    s->a = malloc(s->a_size * sizeof s->a);
+    s->a = malloc (s->a_size * sizeof * s->a);
     if (s->a == NULL)
         free_and_exit_msg(s, "Error\n");
-    s->b = malloc(s->a_size * sizeof s->b);
+    s->b = malloc (s->a_size * sizeof * s->b);
     if (s->b == NULL)
         free_and_exit_msg(s, "Error\n");
 }

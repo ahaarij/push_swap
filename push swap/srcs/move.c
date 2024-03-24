@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 10:54:48 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/03/17 16:20:36 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/03/22 16:17:26 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,25 @@ void	swap(char *str, int *arr, int size)
 	ft_putendl_fd(str, 1);
 }
 
-void	rotate(int *array, int size, char *dir, char *list)
+void	rotate(int *array, int size, char *direction, char *list)
 {
 	int	temp;
 	
 	if (size < 0)
 		return ;
-	if (ft_strncmp(dir, "up", 5) == 0)
+	if (ft_strncmp(direction, "up", 5) == 0)
 	{
 		temp = array[0];
 		ft_memmove(array, array + 1, sizeof(int) * (size - 1));
 		array[size - 1] = temp;
 		write(1, "r", 1);
 	}
-	else if (ft_strncmp(dir, "down", 5) == 0)
+	else if (ft_strncmp(direction, "down", 5) == 0)
 	{
 		temp = array[size - 1];
 		ft_memmove(array + 1, array, sizeof(int) * (size - 1));
 		array[0] = temp;
-		write(1, "r", 1);
+		write(1, "rr", 2);
 	}
 	ft_putendl_fd(list, 1);
 }

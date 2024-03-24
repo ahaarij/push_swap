@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 12:48:00 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/03/17 16:18:25 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/03/25 00:16:30 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void    free_and_exit_msg(t_stacks *s, char *msg)
 		if (s != NULL)
 			free(s);
     }
-    exit (1);
+    exit (0);
 }
 
 
@@ -37,12 +37,12 @@ static void validate_args(int argc, char **argv)
     int j;
 
     i = 0;
-    if (argc > 2)
+    if (argc < 2)
         free_and_exit_msg(NULL, "");
     while (++i < argc)
     {
         j = 0;
-        if(!argv[1][0] || (argv[i][0] && argv[i][0] == ' '))
+        if(!argv[i][0] || (argv[i][0] && argv[i][0] == ' '))
             free_and_exit_msg(NULL, "Error\n");
         while(argv[i][j] != '\0')
         {
@@ -79,7 +79,7 @@ static void join_args(int argc, char **argv, t_stacks *s)
 			temp = temp2;
 		}
 	}
-	s->join_args = ft_strdup(NULL);
+	s->join_args = ft_strdup(temp);
 	if (s->join_args == NULL)
 		free_and_exit_msg(s, "Error\n");
 	if (temp)
@@ -89,7 +89,7 @@ static void join_args(int argc, char **argv, t_stacks *s)
 
 int main(int argc, char **argv)
 {
-    t_stacks *s;
+    t_stacks	*s;
     
     validate_args(argc, argv);
     s = malloc(sizeof * s);
@@ -99,11 +99,12 @@ int main(int argc, char **argv)
     join_args(argc, argv, s);
 	parse_numbers(s);
 	exit_if_dupes_or_sorted(s, 0);
+	create_index(s);
 	if (s->a_size == 2 && s->a[0] > s->a[1])
 		swap("sa", s->a, s->a_size);
 	else if (s->a_size == 3)
 		sort_three_elements(s);
-	else if (s->a_size == 5)
+	else if (s->a_size >= 4 && s->a_size <= 5)
 		sort_four_to_five_elements(s);
 	else
 		radix_sort(s);

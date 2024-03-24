@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 09:39:50 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/03/17 16:11:20 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/03/22 19:24:20 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,12 @@ void	sort_four_to_five_elements(t_stacks *s)
 {
 	while (s->b_size <= 1)
 	{
-		if (s->a[0] == 0 || s->a[0] == 1)
+		if (s->a[0] == 0 || s->a[0] == 1){
 			push("pb", s);
-		else
+		}
+		else{
 			rotate(s->a, s->a_size, "up", "a");
+		}
 	}
 	if (s->b[0] == 0)
 		swap("sb", s->b, s->b_size);
