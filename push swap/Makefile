@@ -6,7 +6,7 @@
 #    By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/06 16:43:46 by ahaarij           #+#    #+#              #
-#    Updated: 2024/03/25 00:43:15 by ahaarij          ###   ########.fr        #
+#    Updated: 2024/04/15 08:36:27 by ahaarij          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,10 @@ $(NAME): $(LIBFT) $(OBJ)
 
 $(OBJ): $(SRC)
 	@$(CC) $(CFLAGS) -c $? -I./$(LIBFT_DIR)
-	@mv *.o srcs
+	@mv a.o srcs
+	@mv move.o srcs
+	@mv utils.o srcs
+	@mv sort.o srcs
 
 clean:	
 	@$(RM) $(OBJ)

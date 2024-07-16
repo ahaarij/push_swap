@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:31:17 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/03/22 19:12:45 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/04/02 17:09:42 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <ctype.h>
 # include <limits.h>
 
+# define UINT32_MAX 4294967295U
+
 typedef struct s_list
 {
 	void			*content;
@@ -35,7 +37,7 @@ int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
-int		ft_isprint(int c);
+int		ft_isspace(int c);
 
 // LIST
 
@@ -47,7 +49,6 @@ t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
 
-
 // MEM
 
 void	*ft_memcpy(void *dst, const void *src, size_t n);
@@ -58,16 +59,15 @@ void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
-
 // PRINTF
 
-int	ft_printchar(int c);
-int	ft_printhex(unsigned int n, int x);
-int	ft_printnbr(int number);
-int	ft_printstr(char *str);
-int	ft_printuint(unsigned int c);
-int	ft_printptr(void *ptr);
-int	ft_printf(const char *input, ...);
+int		ft_printchar(int c);
+int		ft_printhex(unsigned int n, int x);
+int		ft_printnbr(int number);
+int		ft_printstr(char *str);
+int		ft_printuint(unsigned int c);
+int		ft_printptr(void *ptr);
+int		ft_printf(const char *input, ...);
 
 // STRING
 

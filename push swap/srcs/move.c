@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 10:54:48 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/03/22 16:17:26 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/03/28 15:31:55 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	swap(char *str, int *arr, int size)
 {
 	int	temp;
-	
+
 	if (size <= 0)
 		return ;
 	temp = arr[0];
@@ -27,7 +27,7 @@ void	swap(char *str, int *arr, int size)
 void	rotate(int *array, int size, char *direction, char *list)
 {
 	int	temp;
-	
+
 	if (size < 0)
 		return ;
 	if (ft_strncmp(direction, "up", 5) == 0)
@@ -50,8 +50,8 @@ void	rotate(int *array, int size, char *direction, char *list)
 void	push(char *str, t_stacks *s)
 {
 	int	temp;
-	
-	if(ft_strncmp(str, "pa", 3) == 0)
+
+	if (ft_strncmp(str, "pa", 3) == 0)
 	{
 		if (s->b_size <= 0)
 			return ;
@@ -62,7 +62,7 @@ void	push(char *str, t_stacks *s)
 		ft_memmove(s->b, s->b + 1, sizeof(int) * s->b_size);
 		s->a_size++;
 	}
-	else if(ft_strncmp(str, "pb", 3) == 0)
+	else if (ft_strncmp(str, "pb", 3) == 0)
 	{
 		if (s->a_size <= 0)
 			return ;

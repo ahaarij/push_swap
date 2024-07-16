@@ -6,19 +6,31 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 12:48:00 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/03/25 00:16:30 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/04/04 12:04:13 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void    free_and_exit_msg(t_stacks *s, char *msg)
+int	is_empty(char *argv)
 {
-    if (msg)
-        write(2, msg, ft_strlen(msg));
-    if (s != NULL)
-    {
-        if (s->a != NULL)
+	int	i;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (!ft_isspace(argv[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	free_and_exit_msg(t_stacks *s, char *msg)
+{
+	if (s != NULL)
+	{
+		if (s->a != NULL)
 			free(s->a);
 		if (s->b != NULL)
 			free(s->b);
@@ -26,47 +38,51 @@ void    free_and_exit_msg(t_stacks *s, char *msg)
 			free(s->join_args);
 		if (s != NULL)
 			free(s);
-    }
-    exit (0);
+	}
+	if (msg)
+	{
+		write(2, msg, ft_strlen(msg));
+		exit(1);
+	}
+	exit (0);
 }
 
-
-static void validate_args(int argc, char **argv)
+static void	validate_args(int argc, char **argv)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    i = 0;
-    if (argc < 2)
-        free_and_exit_msg(NULL, "");
-    while (++i < argc)
-    {
-        j = 0;
-        if(!argv[i][0] || (argv[i][0] && argv[i][0] == ' '))
-            free_and_exit_msg(NULL, "Error\n");
-        while(argv[i][j] != '\0')
-        {
-            if ((!(ft_isdigit(argv[i][j])) && (argv[i][j] != ' ')
+	i = 0;
+	if (argc < 2)
+		free_and_exit_msg(NULL, "");
+	while (++i < argc)
+	{
+		j = 0;
+		if (is_empty(argv[i]) || !argv[i][0])
+			free_and_exit_msg(NULL, "Error\n");
+		while (argv[i][j] != '\0')
+		{
+			if ((!(ft_isdigit(argv[i][j])) && (argv[i][j] != ' ')
 			&& (argv[i][j] != '-' && argv[i][j] != '+' && argv[i][j] != ' '))
 			|| (argv[i][j] == '-' && argv[i][j + 1] == '\0')
 			|| (argv[i][j] == '+' && argv[i][j + 1] == '\0')
 			|| (argv[i][j] == '-' && argv[i][j + 1] == ' ')
 			|| (argv[i][j] == '+' && argv[i][j + 1] == ' '))
 				free_and_exit_msg(NULL, "Error\n");
-            j++;
-        }
-    }
+			j++;
+		}
+	}
 }
 
-static void join_args(int argc, char **argv, t_stacks *s)
+static void	join_args(int argc, char **argv, t_stacks *s)
 {
-    char	*temp;
+	char	*temp;
 	char	*temp2;
 	int		i;
 
 	i = 0;
 	temp2 = ft_strdup("");
-	while(++i < argc && argv[i] != NULL)
+	while (++i < argc && argv[i] != NULL)
 	{
 		temp = ft_strjoin(temp2, argv[i]);
 		if (temp2)
@@ -86,17 +102,16 @@ static void join_args(int argc, char **argv, t_stacks *s)
 		free(temp);
 }
 
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_stacks	*s;
-    
-    validate_args(argc, argv);
-    s = malloc(sizeof * s);
-    if (s == NULL)
-        exit (1);
-    initialize_stacks(argc, argv, s);
-    join_args(argc, argv, s);
+	t_stacks	*s;
+
+	validate_args(argc, argv);
+	s = malloc(sizeof * s);
+	if (s == NULL)
+		exit (1);
+	initialize_stacks(argc, argv, s);
+	join_args(argc, argv, s);
 	parse_numbers(s);
 	exit_if_dupes_or_sorted(s, 0);
 	create_index(s);
